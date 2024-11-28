@@ -1,5 +1,5 @@
 // Development environment
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:4500/',
+  apiBaseUrl: 'https://fletnix-nodejs-production.up.railway.app/',
 };
