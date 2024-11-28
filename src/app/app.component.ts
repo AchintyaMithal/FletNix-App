@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'fletnix-app';
+  title = 'Fletnix';
+
+  constructor(private router: Router) {}
+
+  isLogin() {
+    return this.router.url === '/';
+  }
+
+  isInRegisterLoginPage() {
+    if (this.router.url === '/register' || this.router.url === '/'  ) return true;
+    return false;
+  }
+
 }
