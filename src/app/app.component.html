@@ -1,0 +1,20 @@
+<ngx-ui-loader
+  fgsColor="#DBEAFE"
+  overlayColor="rgba(0, 0, 0, 0.85)"
+  [text]="isInRegisterLoginPage() ? 'Loading...' : 'Loading your entertainment...'"
+  pbColor="#FF0000"
+  fgsType="ball-spin-clockwise"
+  textColor="#FFFFFF"
+  [logoSize]="120"
+  [gap]="30"
+></ngx-ui-loader>
+
+<app-header></app-header>
+
+<ng-container *ngIf="isLogin()">
+  <app-login></app-login>
+</ng-container>
+
+<div ngxUiLoaderBlurred>
+  <router-outlet></router-outlet>
+</div>

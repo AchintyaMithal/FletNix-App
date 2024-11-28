@@ -1,0 +1,12 @@
+.fixed-dropDown{
+    position: fixed;
+  top: 70px; /* Adjust based on your header height */
+  right: 20px;
+  z-index: 50;
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 12rem;
+}

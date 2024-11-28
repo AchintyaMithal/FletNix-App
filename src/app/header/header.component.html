@@ -1,0 +1,56 @@
+<div class="w-full flex justify-between bg-slate-100 py-4 px-4 md:px-10 items-center">
+  <!-- Back Button (only visible if not on /home) -->
+  <div *ngIf="isLoggedIn() && currentRoute !== '/home'" class="group flex flex-col items-center space-y-1 mr-4">
+    <button
+      routerLink="/home"
+      class="py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+    >
+      <i class="fa-solid fa-arrow-left mr-2"></i>
+    </button>
+    <div class="scale-0 group-hover:scale-100 bg-blue-600 h-[2px] w-full transition-all duration-300"></div>
+  </div>
+
+  <h2 class="text-sm md:text-xl text-zinc-700">
+  </h2>
+
+  <!-- Navigation Section -->
+  <div class="flex gap-5 items-center">   
+    <!-- Register Button -->
+    <div *ngIf="!isLoggedIn() && !isRegisterPage()" class="text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1">
+      <a routerLink="/register">Register</a>
+      <div class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"></div>
+    </div>
+
+    <!-- Login Button -->
+    <div *ngIf="!isLoggedIn() && !isLoginPage()" class="text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1">
+      <a routerLink="/">Login</a>
+      <div class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"></div>
+    </div>
+
+    <!-- Logout Button -->
+    <div *ngIf="isLoggedIn()" class="text-zinc-700 text-sm md:text-lg group flex flex-col space-y-1 cursor-pointer">
+      <a (click)="logout()">Logout</a>
+      <div class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"></div>
+    </div>
+
+    <!-- User Initials Dropdown -->
+    <div *ngIf="isLoggedIn()" class="relative">
+      <div
+        class="h-10 w-10 flex items-center justify-center rounded-full bg-blue-500 text-white cursor-pointer"
+        (click)="toggleDropdown()"
+      >
+        {{ userData.name | slice: 0:1 }}
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div
+        *ngIf="showDropdown"
+        class="absolute right-0 mt-2 w-48 bg-white border fixed-dropDown border-gray-200 shadow-lg rounded-lg p-4"
+      >
+        <p class="text-gray-700"><strong>Name:</strong> {{ userData.name }}</p>
+        <p class="text-gray-700"><strong>Email:</strong> {{ userData.email }}</p>
+        <p class="text-gray-700"><strong>Age:</strong> {{ userData.age }}</p>
+      </div>
+    </div>
+  </div>
+</div>

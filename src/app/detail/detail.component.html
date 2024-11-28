@@ -1,0 +1,69 @@
+<div class="min-h-screen w-full bg-gradient-to-b from-blue-50 to-white py-16">
+
+  <!-- Content Section -->
+  <div class="pt-20 w-11/12 sm:w-2/3 mx-auto p-8 bg-white shadow-lg rounded-2xl border border-gray-200">
+    <div class="flex flex-col space-y-4">
+      <!-- Title and Metadata -->
+      <h1 class="font-extrabold text-2xl sm:text-3xl text-gray-900">
+        {{ data.title }} <span class="text-blue-600">({{ data.release_year }})</span>
+      </h1>
+
+      <div class="flex flex-wrap gap-4 items-center text-gray-700">
+        <div
+          class="py-1 px-3 bg-blue-100 text-blue-700 rounded-full text-sm font-medium shadow-sm"
+        >
+          {{ data.rating }}
+        </div>
+        <p class="text-sm">{{ formatDate(data.date_added) }}</p>
+        <div class="flex flex-wrap items-center text-sm">
+          <span>•</span>
+          <p *ngFor="let item of data.listed_in; index as i" class="px-1">
+            {{ item }}<span *ngIf="i < data.listed_in.length - 1">,</span>
+          </p>
+          <span>•</span>
+        </div>
+
+        <p class="text-sm">{{ data.duration }}</p>
+      </div>
+
+      <p *ngIf="data.country" class="text-gray-800 font-medium">
+        Country: <span class="font-bold text-blue-700">{{ data.country }}</span>
+      </p>
+    </div>
+
+    <!-- Description -->
+    <div class="mt-8">
+      <h2 class="text-lg font-semibold text-gray-800">Description:</h2>
+      <p class="text-gray-600 leading-relaxed">{{ data.description }}</p>
+    </div>
+
+    <!-- Director and Cast -->
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Directed By -->
+      <div class="flex flex-col gap-2">
+        <h2 class="text-lg font-semibold text-gray-800">Directed By:</h2>
+        <p class="text-gray-700 font-bold">
+          {{ data.director || "No record available" }}
+        </p>
+      </div>
+
+      <!-- Cast -->
+      <div class="flex flex-col gap-2">
+        <h2 class="text-lg font-semibold text-gray-800">Cast:</h2>
+        <div
+          class="bg-gray-50 p-4 rounded-lg shadow-inner text-gray-700 text-sm"
+        >
+          <p *ngFor="let item of data.cast" class="inline-block mr-2">
+            {{ item }}
+          </p>
+          <p
+            *ngIf="!data.cast || (data.cast.length <= 1 && data.cast[0] === '')"
+            class="text-gray-500"
+          >
+            No record available
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

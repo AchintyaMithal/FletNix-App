@@ -1,0 +1,6 @@
+::ng-deep .ngx-pagination .current, .btn-info {
+    background: #DBEAFE !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+    color: black !important;
+}
